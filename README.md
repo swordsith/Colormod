@@ -1,5 +1,7 @@
 # Colormod - How to install
-Download release
+Download release - 
+#
+install blazes deob maps https://cdn.wtfblaze.com/MelonLoader.zip, replace your ML folder with his
 #
 Unzip files
 #
