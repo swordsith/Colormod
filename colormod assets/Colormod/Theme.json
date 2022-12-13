@@ -1,0 +1,13 @@
+{
+//Color options => (white, black, blue, clear, cyan, gray, green, grey, magenta, red, yellow) - !Preset Themes overwrite Custom Options!
+Preset (0 = custom, 1 = red, 2 = green, 3 = blue) :2
+
+//Custom Options - Template Images can be found in Colormod/CustomTheme
+Highlight color (Icons & Text)                    :green
+Base color (Button/tab Backgrounds)               :black
+Use Custom Background Image (0 = No, 1 = Yes)     :1
+Use Custom Button Image     (0 = No, 1 = Yes)     :1
+Use Custom Tabs Image       (0 = No, 1 = Yes)     :1
+Use Custom Launch banner img(0 = No, 1 = Yes)     :1  
+Hide Advertisement Carousel (0 = No, 1 = Yes)     :1
+}
