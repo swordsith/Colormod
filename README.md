@@ -1,9 +1,14 @@
 # Colormod - How to install
 Download release
+#
 Unzip files
+#
 take BOTH mods & Colormod folder and place them into your vrchat
+#
 Open Colormod/Theme.json with a text editor and adjust to your liking
+#
 Custom theme assets can be modified from included photoshop file or manually from the assets in the Colormod/CustomTheme folder
+#
 png assets allow for png transparency I highly recomend using if you dont want ur menu to look gross.
 
 Custom Theme
