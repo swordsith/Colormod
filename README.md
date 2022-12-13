@@ -13,16 +13,16 @@ Custom theme assets can be modified from included photoshop file or manually fro
 #
 png assets allow for png transparency I highly recomend using if you dont want ur menu to look gross.
 
-Custom Theme
+#Custom Theme
 ![image](https://user-images.githubusercontent.com/24737477/207200070-371d0a4e-070a-472f-8255-c6b5603289ee.png)
 
-Red Theme
+#Red Theme
 ![image](https://user-images.githubusercontent.com/24737477/207200114-cda9d2ef-e9f5-4f6c-94b1-a3c0bfa39d8d.png)
 
-Blue Theme
+#Blue Theme
 ![image](https://user-images.githubusercontent.com/24737477/207200167-0730497e-2633-4e9d-af70-d866902eaae7.png)
 
-Green Theme
+#Green Theme
 ![image](https://user-images.githubusercontent.com/24737477/207200240-b8bafd2a-0a05-41e1-801a-d27a60949550.png)
 
 
