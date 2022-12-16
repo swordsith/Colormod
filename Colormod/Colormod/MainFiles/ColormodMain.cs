@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Threading.Tasks;
 using ColorMod.API.Patching;
 using ColorMod.MainFiles.Menus;
 using MelonLoader;
@@ -24,8 +25,17 @@ namespace ColorMod.MainFiles
         {
             Instance = new ColormodMain();
                 Task.Run(() => { StartPatches.StartPatch(); }); //patch awaits menus
+            
         }
- 
+        public static IEnumerator WaitMenu()
+        {
+            while (true)
+            {
+                GameObject Menu = GameObject.Find("Canvas_QuickMenu(Clone)/Container/");
+                if (Menu != null) {MelonLogger.Msg("Menu Found, Starting Init. . ."); StartUI(); MelonCoroutines.Stop(WaitMenu()); }
+                yield return new WaitForSeconds(5);
+            }
+        }
         public static void StartUI() //runs from patch
         {
             if (!StartedUI)

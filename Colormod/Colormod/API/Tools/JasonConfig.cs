@@ -8,6 +8,7 @@ namespace ColorMod.API.Tools
 {
     public class JasonConfig
     {
+        #region Static
         public static string ThemeMode { get; set; }
         public static string BackgroundImage { get; set; }
         public static string ButtonImage { get; set; }
@@ -26,6 +27,8 @@ namespace ColorMod.API.Tools
         public static Color Base {get; set;} 
         public static Color Highlight { get; set;}
 
+        #endregion
+
         #region Identify
         public static Color ColorIdentify(string ColorString)
         {
@@ -42,7 +45,8 @@ namespace ColorMod.API.Tools
                 case "magenta": return Color.magenta;
                 case "red":     return Color.red;
                 case "yelllow": return Color.yellow;
-                default:        return Color.white;
+                default:       
+                    MelonLogger.Msg($"Improper color selected {ColorString}, edit json and select from the list with exact capitalization"); return Color.white;
 
             }
         }
@@ -52,11 +56,12 @@ namespace ColorMod.API.Tools
             {
                 case "0": return false;
                 case "1": return true;
-                default:  return true;
+                default: return true;
             }
         }
         #endregion
 
+        #region Create
         public static void CreateJason() // todo add launch title override, add sepperate tab / button color option
         {
             MelonLogger.Msg("Colormod config not found, Creating file now in VRChat/Colormod/Theme.json");
@@ -79,11 +84,14 @@ namespace ColorMod.API.Tools
             };
             System.IO.File.WriteAllLines(Environment.CurrentDirectory + "\\Colormod\\Theme.json", config);
         }
+        #endregion
 
         public static void ReadJason()
         {                                                                                                                      //I know this looks bad, and it is, but does it not work? its 5 am and im tired
             if (System.IO.File.Exists(Environment.CurrentDirectory + "\\Colormod\\Theme.json") == false) {CreateJason();} //checks for jason and puts him back if hes missing <3 love u jason
             string[] Jason = System.IO.File.ReadAllLines(Environment.CurrentDirectory + "\\Colormod\\Theme.json");        //reads the lines from jason file and splits user input
+
+            #region parseJason
             string ModeString      = Jason[2];  string[] ModeSplit = ModeString.Split(':');            ThemeMode = ModeSplit[1];
             string HighlightString = Jason[5];  string[] HighlightSplit = HighlightString.Split(':');  HighlightColor = HighlightSplit[1];
             string BaseString      = Jason[6];  string[] BaseSplit = BaseString.Split(':');            BaseColor = BaseSplit[1];
@@ -111,6 +119,7 @@ namespace ColorMod.API.Tools
             MelonLogger.Msg("Launch Banner Img Enabled " + BannerBool);
             MelonLogger.Msg("Hide ad Carousel? "         + CarouselBool);
             MelonLogger.Msg(" ");
+            #endregion
 
             ExecuteConfig();
         }

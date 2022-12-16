@@ -1,11 +1,9 @@
-﻿using System;
-using MelonLoader;
-using ColorMod.API.Tools;
-using MelonLoader.TinyJSON;
+﻿using ColorMod.API.Tools;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using ProjectR.API.ObjUtils;
+using System.Collections.Generic;
 
 namespace ColorMod.MainFiles.Menus.MenuThemes
 {
@@ -35,45 +33,53 @@ namespace ColorMod.MainFiles.Menus.MenuThemes
         public static Image CameraIcon;
         public static Image SoundIcon;
         public static Image OptionsIcon;
-        #endregion
         public static GameObject HLG;
         public static GameObject Window;
+        #endregion
+
         public static bool UsingTabImage { get; set; }
         public static GameObject FindOBJ(GameObject OBJ, string objectname) { return OBJ.transform.Find(objectname).gameObject; }
+        public static Image ReturnImage(GameObject Parent, string Object) { GameObject OBJ = Parent.transform.Find(Object).gameObject; return OBJ.GetComponent<Image>(); }
+        public static TextMeshProUGUI ReturnText(GameObject Parent, string Object) { GameObject OBJ = Parent.transform.Find(Object).gameObject; return OBJ.GetComponent<TextMeshProUGUI>(); }
+        public static List<Image> TabComponents = new List<Image>();
+        public static List<Image> IconComponents = new List<Image>();
+        public static List<TextMeshProUGUI> TextComponents = new List<TextMeshProUGUI>();
+
         public static void TabOBJ()
         {
             #region OBJs
-            HLG         = GameObject.Find("aCanvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup");
-            Window      = GameObject.Find("aCanvas_QuickMenu(Clone)/CanvasGroup/Container/Window/");
-            LaunchTab   = FindOBJ(HLG, "Page_Dashboard/Background").GetComponent<Image>();
-            AlertTab    = FindOBJ(HLG, "Page_Notifications/Background").GetComponent<Image>();
-            HereTab     = FindOBJ(HLG, "Page_Here/Background").GetComponent<Image>();
-            CameraTab   = FindOBJ(HLG, "Page_Camera/Background").GetComponent<Image>();
-            SoundTab    = FindOBJ(HLG, "Page_AudioSettings/Background").GetComponent<Image>();
-            OptionsTab  = FindOBJ(HLG, "Page_Settings/Background").GetComponent<Image>();
+            HLG         = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup");
+            Window      = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/");
+            LaunchTab   = ReturnImage(HLG, "Page_Dashboard/Background");
+            AlertTab    = ReturnImage(HLG, "Page_Notifications/Background");
+            HereTab     = ReturnImage(HLG, "Page_Here/Background");
+            CameraTab   = ReturnImage(HLG, "Page_Camera/Background");
+            SoundTab    = ReturnImage(HLG, "Page_AudioSettings/Background");
+            OptionsTab  = ReturnImage(HLG, "Page_Settings/Background");
 
-            LaunchIcon  = FindOBJ(HLG, "Page_Dashboard/Icon").GetComponent<Image>();
-            AlertIcon   = FindOBJ(HLG, "Page_Notifications/Icon").GetComponent<Image>();
-            HereIcon    = FindOBJ(HLG, "Page_Here/Icon").GetComponent<Image>();
-            CameraIcon  = FindOBJ(HLG, "Page_Camera/Icon").GetComponent<Image>();
-            SoundIcon   = FindOBJ(HLG, "Page_AudioSettings/Icon").GetComponent<Image>();
-            OptionsIcon = FindOBJ(HLG, "Page_Settings/Icon").GetComponent<Image>();
+            LaunchIcon  = ReturnImage(HLG, "Page_Dashboard/Icon");
+            AlertIcon   = ReturnImage(HLG, "Page_Notifications/Icon");
+            HereIcon    = ReturnImage(HLG, "Page_Here/Icon");
+            CameraIcon  = ReturnImage(HLG, "Page_Camera/Icon");
+            SoundIcon   = ReturnImage(HLG, "Page_AudioSettings/Icon");
+            OptionsIcon = ReturnImage(HLG, "Page_Settings/Icon");
 
-            MuteIcon   = FindOBJ(Window, "MicButton/Icon").GetComponent<Image>();
-            MuteButton = FindOBJ(Window, "MicButton").GetComponent<Image>();
-            SafeIcon   = FindOBJ(Window, "Toggle_SafeMode/Icon").GetComponent<Image>();
-            SafeButton = FindOBJ(Window, "Toggle_SafeMode").GetComponent<Image>();
-            WingL      = FindOBJ(Window, "Wing_Left/Button/Icon").GetComponent<Image>();
-            WingR      = FindOBJ(Window, "Wing_Right/Button/Icon").GetComponent<Image>();
-            FPS        = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_FPS").GetComponent<TextMeshProUGUI>();
-            Ping       = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_Ping").GetComponent<TextMeshProUGUI>();
-            FPSBack    = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Background").GetComponent<Image>();
+            MuteIcon   = ReturnImage(Window, "MicButton/Icon");
+            MuteButton = ReturnImage(Window, "MicButton");
+            SafeIcon   = ReturnImage(Window, "Toggle_SafeMode/Icon");
+            SafeButton = ReturnImage(Window, "Toggle_SafeMode");
+            WingL      = ReturnImage(Window, "Wing_Left/Button/Icon");
+            WingR      = ReturnImage(Window, "Wing_Right/Button/Icon");
+            FPS        = ReturnText(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_FPS");
+            Ping       = ReturnText(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_Ping");
+            FPSBack    = ReturnImage(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Background");
             #endregion
             TabsTheme();
         }
 
         public static void TabsTheme()
         {
+            //foreach (Image Img in TabComponents) { Img }
             MenuUtils.SkipUpdate(MuteButton); //skips update to avoid tabs recoloring themselves
             MenuUtils.SkipUpdate(SafeButton);
             MenuUtils.SkipUpdate(LaunchTab);
@@ -134,7 +140,6 @@ namespace ColorMod.MainFiles.Menus.MenuThemes
                 OptionsTab.color = Color.white;
             }
             #endregion
-
         }
         public static void TabsOnUP()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using ColorMod.API.Tools;
+using MelonLoader;
 using ProjectR.API.ObjUtils;
 using TMPro;
 using UnityEngine;
@@ -20,7 +21,6 @@ namespace ColorMod.MainFiles.Menus
         public static GameObject CameraMenu;
         public static GameObject SoundMenu;
         public static GameObject SettingsMenu;
-        public static GameObject RMenu;
 
         public static GameObject QMExpand;
         public static GameObject MMenu;
@@ -65,8 +65,6 @@ namespace ColorMod.MainFiles.Menus
             ButtonSprite     = ProjectRobj.LoadSpriteFromDisk(Environment.CurrentDirectory + $"\\Colormod\\{ThemeFolder}\\BUTTON.png");
             TabSprite        = ProjectRobj.LoadSpriteFromDisk(Environment.CurrentDirectory + $"\\Colormod\\{ThemeFolder}\\TAB.png");
 
-
-
             #region DashboardMods
             if (JasonConfig.BackgroundBool == true) { Background1.GetComponent<Image>().overrideSprite = BackgroundSprite; Background1.GetComponent<Image>().color = Color.white; } else { }
             if (JasonConfig.BannerBool == true) { ProjectRobj.Createbox(HH1.transform, new Vector3(-5.3969f, -276.9864f, 0.9601f), new Vector3(0f, 0f, 0f), new Vector3(9.7618f, 3.3545f, 1f), "MainMenuUtils", Color.white, BannerSprite); } else { }
@@ -80,8 +78,9 @@ namespace ColorMod.MainFiles.Menus
                 LaunchTMP.text = " "; //setup custom title at some point
                 LaunchTMP.color = ReferencedInfo.C01;
                 LaunchTMP.enableWordWrapping = false;
-                #endregion
+            #endregion
 
+            MelonLogger.Msg("Menu Initialized, Starting Theme. . .");
             MenuTheme();
         }
         public static void MenuTheme() //colors main menu and tabs/clients 
