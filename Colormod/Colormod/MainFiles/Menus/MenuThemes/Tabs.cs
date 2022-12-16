@@ -12,59 +12,62 @@ namespace ColorMod.MainFiles.Menus.MenuThemes
     public class Tabs
     {
         #region StaticGOBJs
-        public static GameObject MuteIcon;
-        public static GameObject MuteButton;
-        public static GameObject SafeIcon;
-        public static GameObject SafeButton;
-        public static GameObject WingL;
-        public static GameObject WingR;
-        public static GameObject FPS;
-        public static GameObject Ping;
-        public static GameObject FPSBack;
+        public static Image MuteIcon;
+        public static Image MuteButton;
+        public static Image SafeIcon;
+        public static Image SafeButton;
+        public static Image WingL;
+        public static Image WingR;
+        public static TextMeshProUGUI FPS;
+        public static TextMeshProUGUI Ping;
+        public static Image FPSBack;
 
-        public static GameObject LaunchTab;
-        public static GameObject AlertTab;
-        public static GameObject HereTab;
-        public static GameObject CameraTab;
-        public static GameObject SoundTab;
-        public static GameObject OptionsTab;
+        public static Image LaunchTab;
+        public static Image AlertTab;
+        public static Image HereTab;
+        public static Image CameraTab;
+        public static Image SoundTab;
+        public static Image OptionsTab;
 
-        public static GameObject LaunchIcon;
-        public static GameObject AlertIcon;
-        public static GameObject HereIcon;
-        public static GameObject CameraIcon;
-        public static GameObject SoundIcon;
-        public static GameObject OptionsIcon;
+        public static Image LaunchIcon;
+        public static Image AlertIcon;
+        public static Image HereIcon;
+        public static Image CameraIcon;
+        public static Image SoundIcon;
+        public static Image OptionsIcon;
         #endregion
+        public static GameObject HLG;
+        public static GameObject Window;
         public static bool UsingTabImage { get; set; }
+        public static GameObject FindOBJ(GameObject OBJ, string objectname) { return OBJ.transform.Find(objectname).gameObject; }
         public static void TabOBJ()
         {
             #region OBJs
-            //===Tabs
-            LaunchTab   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Dashboard/Background");
-            AlertTab    = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Notifications/Background");
-            HereTab     = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Here/Background");
-            CameraTab   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Camera/Background");
-            SoundTab    = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_AudioSettings/Background");
-            OptionsTab  = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Settings/Background");
+            HLG         = GameObject.Find("aCanvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup");
+            Window      = GameObject.Find("aCanvas_QuickMenu(Clone)/CanvasGroup/Container/Window/");
+            LaunchTab   = FindOBJ(HLG, "Page_Dashboard/Background").GetComponent<Image>();
+            AlertTab    = FindOBJ(HLG, "Page_Notifications/Background").GetComponent<Image>();
+            HereTab     = FindOBJ(HLG, "Page_Here/Background").GetComponent<Image>();
+            CameraTab   = FindOBJ(HLG, "Page_Camera/Background").GetComponent<Image>();
+            SoundTab    = FindOBJ(HLG, "Page_AudioSettings/Background").GetComponent<Image>();
+            OptionsTab  = FindOBJ(HLG, "Page_Settings/Background").GetComponent<Image>();
 
-            //===TabIcons
-            LaunchIcon  = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Dashboard/Icon");
-            AlertIcon   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Notifications/Icon");
-            HereIcon    = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Here/Icon");
-            CameraIcon  = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Camera/Icon");
-            SoundIcon   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_AudioSettings/Icon");
-            OptionsIcon = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Page_Buttons_QM/HorizontalLayoutGroup/Page_Settings/Icon");
+            LaunchIcon  = FindOBJ(HLG, "Page_Dashboard/Icon").GetComponent<Image>();
+            AlertIcon   = FindOBJ(HLG, "Page_Notifications/Icon").GetComponent<Image>();
+            HereIcon    = FindOBJ(HLG, "Page_Here/Icon").GetComponent<Image>();
+            CameraIcon  = FindOBJ(HLG, "Page_Camera/Icon").GetComponent<Image>();
+            SoundIcon   = FindOBJ(HLG, "Page_AudioSettings/Icon").GetComponent<Image>();
+            OptionsIcon = FindOBJ(HLG, "Page_Settings/Icon").GetComponent<Image>();
 
-            MuteIcon   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/MicButton/Icon");
-            MuteButton = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/MicButton");
-            SafeIcon   = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Toggle_SafeMode/Icon");
-            SafeButton = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Toggle_SafeMode");
-            WingL      = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Wing_Left/Button/Icon");
-            WingR      = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/Wing_Right/Button/Icon");
-            FPS        = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMNotificationsArea/DebugInfoPanel/Panel/Text_FPS");
-            Ping       = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMNotificationsArea/DebugInfoPanel/Panel/Text_Ping");
-            FPSBack    = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMNotificationsArea/DebugInfoPanel/Panel/Background");
+            MuteIcon   = FindOBJ(Window, "MicButton/Icon").GetComponent<Image>();
+            MuteButton = FindOBJ(Window, "MicButton").GetComponent<Image>();
+            SafeIcon   = FindOBJ(Window, "Toggle_SafeMode/Icon").GetComponent<Image>();
+            SafeButton = FindOBJ(Window, "Toggle_SafeMode").GetComponent<Image>();
+            WingL      = FindOBJ(Window, "Wing_Left/Button/Icon").GetComponent<Image>();
+            WingR      = FindOBJ(Window, "Wing_Right/Button/Icon").GetComponent<Image>();
+            FPS        = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_FPS").GetComponent<TextMeshProUGUI>();
+            Ping       = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Text_Ping").GetComponent<TextMeshProUGUI>();
+            FPSBack    = FindOBJ(Window, "QMNotificationsArea/DebugInfoPanel/Panel/Background").GetComponent<Image>();
             #endregion
             TabsTheme();
         }
@@ -81,53 +84,54 @@ namespace ColorMod.MainFiles.Menus.MenuThemes
             MenuUtils.SkipUpdate(OptionsTab);
 
             #region TabsTheme
-            WingL.     GetComponent<Image>().color = ReferencedInfo.C01;
-            WingR.     GetComponent<Image>().color = ReferencedInfo.C01;
-            FPSBack.   GetComponent<Image>().color = ReferencedInfo.C02;
-            FPS.       GetComponent<TextMeshProUGUI>().color = ReferencedInfo.C01;
-            Ping.      GetComponent<TextMeshProUGUI>().color = ReferencedInfo.C01;
+            WingL.     color = ReferencedInfo.C01;
+            WingR.     color = ReferencedInfo.C01;
+            FPSBack.   color = ReferencedInfo.C02;
+            FPS.       color = ReferencedInfo.C01;
+            Ping.      color = ReferencedInfo.C01;
 
+            UsingTabImage = true;
             Sprite TABBack = MainMenu.TabSprite;
             if (JasonConfig.ThemeMode == "0") //checks if custom theme
             {
                 if (!JasonConfig.TabBool) //colors with theme if not using custom image
                 {
-                    LaunchTab. GetComponent<Image>().color = ReferencedInfo.C02;
-                    AlertTab.  GetComponent<Image>().color = ReferencedInfo.C02;
-                    HereTab.   GetComponent<Image>().color = ReferencedInfo.C02;
-                    CameraTab. GetComponent<Image>().color = ReferencedInfo.C02;
-                    SoundTab.  GetComponent<Image>().color = ReferencedInfo.C02;
-                    OptionsTab.GetComponent<Image>().color = ReferencedInfo.C02;
+                    LaunchTab. color = ReferencedInfo.C02;
+                    AlertTab.  color = ReferencedInfo.C02;
+                    HereTab.   color = ReferencedInfo.C02;
+                    CameraTab. color = ReferencedInfo.C02;
+                    SoundTab.  color = ReferencedInfo.C02;
+                    OptionsTab.color = ReferencedInfo.C02;
                     UsingTabImage = false; return;
                 }  //if custom theme wants no button image skips
                 if (!UsingTabImage) return;
-                LaunchTab. GetComponent<Image>().overrideSprite = TABBack;
-                AlertTab.  GetComponent<Image>().overrideSprite = TABBack;
-                HereTab.   GetComponent<Image>().overrideSprite = TABBack;
-                CameraTab. GetComponent<Image>().overrideSprite = TABBack;
-                SoundTab.  GetComponent<Image>().overrideSprite = TABBack;
-                OptionsTab.GetComponent<Image>().overrideSprite = TABBack;
-                LaunchTab. GetComponent<Image>().color = Color.white;
-                AlertTab.  GetComponent<Image>().color = Color.white;
-                HereTab.   GetComponent<Image>().color = Color.white;
-                CameraTab. GetComponent<Image>().color = Color.white;
-                SoundTab.  GetComponent<Image>().color = Color.white;
-                OptionsTab.GetComponent<Image>().color = Color.white;
+                LaunchTab. overrideSprite = TABBack;
+                AlertTab.  overrideSprite = TABBack;
+                HereTab.   overrideSprite = TABBack;
+                CameraTab. overrideSprite = TABBack;
+                SoundTab.  overrideSprite = TABBack;
+                OptionsTab.overrideSprite = TABBack;
+                LaunchTab. color = Color.white;
+                AlertTab.  color = Color.white;
+                HereTab.   color = Color.white;
+                CameraTab. color = Color.white;
+                SoundTab.  color = Color.white;
+                OptionsTab.color = Color.white;
             }
             else //uses set theme images
             { 
-                LaunchTab. GetComponent<Image>().overrideSprite = TABBack;
-                AlertTab.  GetComponent<Image>().overrideSprite = TABBack;
-                HereTab.   GetComponent<Image>().overrideSprite = TABBack;
-                CameraTab. GetComponent<Image>().overrideSprite = TABBack;
-                SoundTab.  GetComponent<Image>().overrideSprite = TABBack;
-                OptionsTab.GetComponent<Image>().overrideSprite = TABBack;
-                LaunchTab. GetComponent<Image>().color = Color.white;
-                AlertTab.  GetComponent<Image>().color = Color.white;
-                HereTab.   GetComponent<Image>().color = Color.white;
-                CameraTab. GetComponent<Image>().color = Color.white;
-                SoundTab.  GetComponent<Image>().color = Color.white;
-                OptionsTab.GetComponent<Image>().color = Color.white;
+                LaunchTab. overrideSprite = TABBack;
+                AlertTab.  overrideSprite = TABBack;
+                HereTab.   overrideSprite = TABBack;
+                CameraTab. overrideSprite = TABBack;
+                SoundTab.  overrideSprite = TABBack;
+                OptionsTab.overrideSprite = TABBack;
+                LaunchTab. color = Color.white;
+                AlertTab.  color = Color.white;
+                HereTab.   color = Color.white;
+                CameraTab. color = Color.white;
+                SoundTab.  color = Color.white;
+                OptionsTab.color = Color.white;
             }
             #endregion
 
@@ -135,15 +139,15 @@ namespace ColorMod.MainFiles.Menus.MenuThemes
         public static void TabsOnUP()
         {
             #region TabsOnUPTheme
-            SafeIcon.   GetComponent<Image>().color = ReferencedInfo.C01;
-            LaunchIcon. GetComponent<Image>().color = ReferencedInfo.C01;
-            AlertIcon.  GetComponent<Image>().color = ReferencedInfo.C01;
-            HereIcon.   GetComponent<Image>().color = ReferencedInfo.C01;
-            CameraIcon. GetComponent<Image>().color = ReferencedInfo.C01;
-            SoundIcon.  GetComponent<Image>().color = ReferencedInfo.C01;
-            OptionsIcon.GetComponent<Image>().color = ReferencedInfo.C01;
-            MuteButton. GetComponent<Image>().color = ReferencedInfo.C02;
-            SafeButton. GetComponent<Image>().color = ReferencedInfo.C02;
+            SafeIcon.   color = ReferencedInfo.C01;
+            LaunchIcon. color = ReferencedInfo.C01;
+            AlertIcon.  color = ReferencedInfo.C01;
+            HereIcon.   color = ReferencedInfo.C01;
+            CameraIcon. color = ReferencedInfo.C01;
+            SoundIcon.  color = ReferencedInfo.C01;
+            OptionsIcon.color = ReferencedInfo.C01;
+            MuteButton. color = ReferencedInfo.C02;
+            SafeButton. color = ReferencedInfo.C02;
             #endregion
         }
     }

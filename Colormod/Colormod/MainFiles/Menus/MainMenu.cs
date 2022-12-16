@@ -36,6 +36,7 @@ namespace ColorMod.MainFiles.Menus
         public static GameObject FindOBJ(GameObject OBJ, string objectname) { return OBJ.transform.Find(objectname).gameObject; }
         public static void LaunchMenu() 
         {
+
             #region MM OBJ's
             MenuContainer  = GameObject.Find("Canvas_QuickMenu(Clone)/Container/"); ;
             GameObject QMP = GameObject.Find("Canvas_QuickMenu(Clone)/CanvasGroup/Container/Window/QMParent");
@@ -64,6 +65,8 @@ namespace ColorMod.MainFiles.Menus
             ButtonSprite     = ProjectRobj.LoadSpriteFromDisk(Environment.CurrentDirectory + $"\\Colormod\\{ThemeFolder}\\BUTTON.png");
             TabSprite        = ProjectRobj.LoadSpriteFromDisk(Environment.CurrentDirectory + $"\\Colormod\\{ThemeFolder}\\TAB.png");
 
+
+
             #region DashboardMods
             if (JasonConfig.BackgroundBool == true) { Background1.GetComponent<Image>().overrideSprite = BackgroundSprite; Background1.GetComponent<Image>().color = Color.white; } else { }
             if (JasonConfig.BannerBool == true) { ProjectRobj.Createbox(HH1.transform, new Vector3(-5.3969f, -276.9864f, 0.9601f), new Vector3(0f, 0f, 0f), new Vector3(9.7618f, 3.3545f, 1f), "MainMenuUtils", Color.white, BannerSprite); } else { }
@@ -72,9 +75,11 @@ namespace ColorMod.MainFiles.Menus
                 QuickLinkTitle.active = false; //cleans out the useless text meshes
                 QuickActionTitle.active = false;
                 QMExpand.active = false;
-                LaunchTitle.GetComponent<TextMeshProUGUI>().text = " "; //setup custom title at some point
-                LaunchTitle.GetComponent<TextMeshProUGUI>().color = ReferencedInfo.C01;
-                LaunchTitle.GetComponent<TextMeshProUGUI>().enableWordWrapping = false;
+
+                TextMeshProUGUI LaunchTMP = LaunchTitle.GetComponent<TextMeshProUGUI>();
+                LaunchTMP.text = " "; //setup custom title at some point
+                LaunchTMP.color = ReferencedInfo.C01;
+                LaunchTMP.enableWordWrapping = false;
                 #endregion
 
             MenuTheme();
